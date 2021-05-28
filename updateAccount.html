@@ -1,57 +1,38 @@
 
+
 <!DOCTYPE html>
-<!--
-Template Name: Sislaf
-Author: <a href="https://www.os-templates.com/">OS Templates</a>
-Author URI: https://www.os-templates.com/
-Copyright: OS-Templates.com
-Licence: Free to use under our free template licence terms
-Licence URI: https://www.os-templates.com/template-terms
--->
+
 <html lang="">
 <!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
 <head>
    <meta charset="ISO-8859-1">
-<title>Profile</title>
+<title>Update Profile</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="layout/styles/layout2.css" rel="stylesheet" type="text/css" media="all">
-<link rel = "stylesheet" href = "css/userprofile_styles.css"/>
+<link href="resources/layout/styles/layout2.css" rel="stylesheet" type="text/css" media="all">
+<link rel = "stylesheet" href = "resources/css/userprofile_styles.css"/>
 
 </head>
 <body id="top">
-<!-- ################################################################################################ -->
-<!--
-          fname
-          lname
-           id removed from form
-          email type changed to email
-          gender
-          dob
-        add cancel submit button redirect to the user profile  page
-        -->
 
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- Top Background Image Wrapper -->
+
+  
 
 <div class="bgded overlay" > 
  
-  <!-- ################################################################################################ -->
+  
   <div class="wrapper row0">
 
     <div id="topbar" class="hoc clear">
 	
-				<image class = "logo" src = "images/demo/SpartaWhite2.png">
+				<image class = "logo" src = "resources/images/demo/SpartaWhite2.png">
 		
       <div class="fl_left"> 
 	  
-        <!-- ################################################################################################ -->
-        	
-        <!-- ################################################################################################ -->
+        
       </div>
       <div class="fl_right"> 
-        <!-- ################################################################################################ -->
+       
 	
         <ul class="nospace">
           <li><a href="index.html"><i class="fas fa-home"></i></a></li>
@@ -70,16 +51,16 @@ Licence URI: https://www.os-templates.com/template-terms
             </div>
           </li>
         </ul>
-        <!-- ################################################################################################ -->
+      
       </div>
     </div>
   </div>
-
+  
   <div class="wrapper row1">
     <header id="header" class="hoc clear">
      
       <nav id="mainav" class="fl_right"> 
-        <!-- ################################################################################################ -->
+       
         <ul class="clear">
           <li class="active"><a href="index.html">Home</a></li>
           <li><a class="drop" href="#">Categories</a>
@@ -137,28 +118,26 @@ Licence URI: https://www.os-templates.com/template-terms
           <li><a href="#">Contact Us</a></li>
           <li><a href="#">About Us</a></li>
         </ul>
-        <!-- ################################################################################################ -->
+      
       </nav>
 	  
     </header>
   </div>
-  
+ 
 </div>
-<!-- End Top Background Image Wrapper -->
 
 <div class="wrapper row3">
   <main class="hoc container clear"> 
-    <!-- main body -->
-    
+
    
+    
     <section id="overview">
       <div class="sectiontitle">
         <p class="nospace font-xs"></p>
         <p class="heading underline font-x2"></p>
       </div>   
     </section>
-      
-    <!-- / main body -->
+   
 	
 		<ul class = "navBar">
 		<div class="navdiv">
@@ -171,7 +150,7 @@ Licence URI: https://www.os-templates.com/template-terms
 		</ul>
 
       <div class = "profile">
-      <image class = "profilepic" src = "images/demo/profilepic.jpg" alt = "profile_picture" >
+      <image class = "profilepic" src = "resources/images/demo/profilepic.jpg" alt = "profile_picture" >
       <button class = "editprofilebtn" id = "editprof" onclick = "edpbtn()">Edit</button>
       <div id = "myModal" class = "modal">
   
@@ -186,8 +165,8 @@ Licence URI: https://www.os-templates.com/template-terms
       
       </div>
       <div class = "p_details">
-        <%= fname%> <%= lname%>
-       <p style="font-size: small;"> <%= userName%></p>
+      <div style = "font-weight: bold;"><%= fname%> <%= lname%></div>
+       <p style="font-size: small;"> <%= userName%> </p>
       </div>
 	
 	    <div class = "secton">
@@ -197,7 +176,9 @@ Licence URI: https://www.os-templates.com/template-terms
         
 	  	<div class = "updateformdiv">
 			
-	      <form action = "update" method = "post">
+	      <form action = "update upcancel" method = "post">
+	      
+	       <input type = "hidden" name = "id"  value = "<%= id %>"/>
           
           <label for = "uname">User Name</label>
           <input type = "text" name = "uname" value = "<%= userName%>"><br>
@@ -214,7 +195,7 @@ Licence URI: https://www.os-templates.com/template-terms
           <input type = "date" name = "dob" value = "<%= dob%>"><br>
 
           <label for = "pass">Password</label>
-	      	<input type = "text" name = "pass" value = "<%= password%>"><br>
+	      	<input type = "password" name = "pass" value = "<%= password%>"><br>
 
           </div>
 
@@ -223,19 +204,23 @@ Licence URI: https://www.os-templates.com/template-terms
           <input  type = "text" name="lname" value="<%= lname%>"><br>
           <label for = "phone">Phone</label>
 	      	<input type = "text" name = "phone" pattern = "[0-9]{10}" value = "<%= phone%>"><br>
-
+			
+			
+	
+				<c:set var = "gender1" value = "<%=gender %>"/>	
+			
+			
           <label for="gender">Gender</label>
-          <label for="male"><input style = "float: left;" type="radio" id="male" name="gender" value="male">Male</label>
-          <label for="female"> <input style = "float: left;" type="radio" id="female" name="gender" value="female">Female</label>
-          <label for="other"><input style = "float: left;" type="radio" id="other" name="gender" value="other">Other</label>
+          <label for="male"><input style = "float: left;" type="radio" id="male" name="gender" value="Male" <c:if test="${gender1=='Male'}">checked</c:if>>Male</label>
+          <label for="female"> <input style = "float: left;" type="radio" id="female" name="gender" value="Female"<c:if test="${gender1=='Female'}">checked</c:if>>Female</label>
+          <label for="other"><input style = "float: left;" type="radio" id="other" name="gender" value="Other"<c:if test="${gender1=='Other'}">checked</c:if>>Other</label>
 
           </div>
          
-          
-	      	<div class = "buttondiv">
-          <div class = "rbdiv"><input type = "reset" class = "resetbtn" id = "cancel" name = "cancel" value = "Cancel"></div>
-		    	<div class = "sbdiv"><input type = "submit" class = "submitbtn" id = "submit" name = "submit" value = "Save Profile"></div>
-	    	  </div>
+          <div class = "buttondiv">
+			<div class = "rbdiv"><input type = "submit" class = "resetbtn" id = "cancel" formaction = "upcancel" value = "Cancel"></div>
+		   	<div class = "sbdiv"><input type = "submit" class = "submitbtn" id = "submit" formaction = "update" value = "Save Profile"></div>
+	      </div>
 
           
     	  </form>
@@ -263,9 +248,10 @@ Licence URI: https://www.os-templates.com/template-terms
 
 
 
+
 <div class="bgded overlay row4";">
   <footer id="footer" class="hoc clear"> 
-    <!-- ################################################################################################ -->
+   
     <div class="center btmspace-50">
       <ul class="faico clear">
         <li><a class="faicon-dribble" href="#"><i class="fab fa-dribbble"></i></a></li>
@@ -275,22 +261,21 @@ Licence URI: https://www.os-templates.com/template-terms
         <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
         <li><a class="faicon-vk" href="#"><i class="fab fa-vk"></i></a></li>
       </ul>
-      <p class="nospace">Â© Copyright 2021   |  Event Management   |   All Rights Reserved
+      <p class="nospace">© Copyright 2021   |  Event Management   |   All Rights Reserved
 </p>
     </div>
-    <!-- ################################################################################################ -->
+   
     <hr class="btmspace-50">
-    <!-- ################################################################################################ -->
-
+  
     
-    <!-- ################################################################################################ -->
+   
   </footer>
 </div>
 
 <a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
 <!-- JAVASCRIPTS -->
-<script src="layout/scripts/jquery.min.js"></script>
-<script src="layout/scripts/jquery.backtotop.js"></script>
-<script src="layout/scripts/jquery.mobilemenu.js"></script>
+<script src="resources/layout/scripts/jquery.min.js"></script>
+<script src="resources/layout/scripts/jquery.backtotop.js"></script>
+<script src="resources/layout/scripts/jquery.mobilemenu.js"></script>
 </body>
 </html>
